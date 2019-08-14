@@ -156,7 +156,9 @@
             uint axis = (uint)mapping.Function;
             short axisValue = (short)mapping.TargetValue;
             short oldValue = gamepad.GetAxisState(axis);
-            short newValue = isKeyDown ? axisValue : (short)XboxAxisPosition.Center;
+            short newValue = (short)XboxAxisPosition.Center;
+
+            if (isKeyDown && !hasOppositeDown) newValue = axisValue;
 
             if (hasOppositeDown && !isKeyDown)
             {
